@@ -7,7 +7,10 @@ export const totalItemsSlice = createSlice({
   reducers: {
     addItem: (state, action) => {
       console.log('add items:', state, action)
+
       state.push(action.payload);
+      
+
     },
   },
 });
