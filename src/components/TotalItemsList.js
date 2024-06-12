@@ -1,11 +1,9 @@
 // src/components/TotalItemsList.js
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { List, ListItem, ListItemText, Typography } from '@mui/material';
+import { List, ListItem, ListItemText, Typography, Box } from '@mui/material';
 
 
 const TotalItemsList = () => {
-  console.log("TotalItemsList!!!!")
   const [data, setData] = useState([]);
   useEffect(() => {
     // Define an async function to fetch data
@@ -29,7 +27,7 @@ const TotalItemsList = () => {
   }, []); // Empty dependency array means this useEffect runs once when the component mounts
 
   const totalItems = data.reduce(function (acc, value) {
-    const foundIndex = acc.findIndex(item => item.category == value.category);
+    const foundIndex = acc.findIndex(item => item.category === value.category);
     if (foundIndex === -1) {
       acc.push({ category: value.category, items: [value.name], count: 1 });
     } else {
@@ -39,7 +37,7 @@ const TotalItemsList = () => {
     return acc;
   }, []);
   return (
-    <div style={{ direction: 'rtl', flexDirection: 'row' }}>
+    <Box style={{ direction: 'rtl', flexDirection: 'row' }}>
       <List style={{
         direction: 'rtl', display: 'inline-flex', alignItems: 'flex-start'
       }}>
@@ -56,7 +54,7 @@ const TotalItemsList = () => {
           </ListItem>
         ))}
       </List>
-    </div>
+    </Box>
   );
 };
 

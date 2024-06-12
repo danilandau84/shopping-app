@@ -12,7 +12,7 @@ const ItemForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (category && name) {
-      useEffect(() => {
+  
         dispatch(addItem({ category, name }));
         fetch("http://localhost:4001/items", {
           method: "POST",
@@ -27,7 +27,7 @@ const ItemForm = () => {
           setCategory('');
           setName('');
         })
-      })
+
 
 
     }
