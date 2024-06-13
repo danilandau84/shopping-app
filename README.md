@@ -6,6 +6,6 @@
 
 # Docker Instructions:
 1. Build docker image command: docker build -t my-app:latest .
-2. Run  docker command: docker run -it --rm -p 80:80 my-app:lates
+2. Run  docker command: docker run -it --rm -p 80:80 my-app:latest
 
     
