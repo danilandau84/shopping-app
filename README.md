@@ -1,8 +1,8 @@
-##React Project
-#Description
+## React Project
+# Description
 This is a React project that provides [brief description of your application]. The application is built using [any specific tools or libraries] and follows [any notable design patterns or principles].
 
-#Table of Contents
+# Table of Contents
 Installation
 Running the Application
 Docker Instructions
