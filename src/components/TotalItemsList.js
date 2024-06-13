@@ -1,6 +1,6 @@
 // src/components/TotalItemsList.js
-import React, { useEffect,useSelector } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { List, ListItem, ListItemText, Typography, Box } from '@mui/material';
 import { fetchItemsSuccess } from '../totalItemsSlice';
 
@@ -8,8 +8,8 @@ import { fetchItemsSuccess } from '../totalItemsSlice';
 
 const TotalItemsList = () => {
   const dispatch = useDispatch();
+
   useEffect(() => { 
-    // Define an async function to fetch data
     const fetchData = async () => {
       try {
         // Replace with your API endpoint
@@ -20,16 +20,19 @@ const TotalItemsList = () => {
         }
         const result = await response.json();  
          dispatch(fetchItemsSuccess(result));
+        
       } catch (error) {
         console.log(error.message);
       } 
     };
 
-    // Call the async function
+    // Call the async function 
     fetchData();
   }, []); // Empty dependency array means this useEffect runs once when the component mounts
 
-  const allItems = useSelector((state) => state.totalItems);
+  const allItems= useSelector((state) => state.totalItems);
+
+  console.log('allItems VIEW', allItems)
   const totalItems = allItems.reduce(function (acc, value) {
     const foundIndex = acc.findIndex(item => item.category === value.category);
     if (foundIndex === -1) {

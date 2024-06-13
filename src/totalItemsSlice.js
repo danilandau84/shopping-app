@@ -10,7 +10,9 @@ export const totalItemsSlice = createSlice({
       state.push(action.payload);
     },
     fetchItemsSuccess: (state, action) => {
-      state.items = action.payload;
+      console.log('fetchItemsSuccess BEFORE LOAD',action.payload )
+      state = action.payload;
+      console.log('fetchItemsSuccess STATE',state )
     },
   },
 });
