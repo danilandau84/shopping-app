@@ -1,11 +1,14 @@
 // src/components/TotalItemsList.js
-import React, { useState, useEffect } from 'react';
+import React, { useEffect,useSelector } from 'react';
+import { useDispatch } from 'react-redux';
 import { List, ListItem, ListItemText, Typography, Box } from '@mui/material';
+import { fetchItemsSuccess } from '../totalItemsSlice';
+
 
 
 const TotalItemsList = () => {
-  const [data, setData] = useState([]);
-  useEffect(() => {
+  const dispatch = useDispatch();
+  useEffect(() => { 
     // Define an async function to fetch data
     const fetchData = async () => {
       try {
@@ -15,8 +18,8 @@ const TotalItemsList = () => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
-        const result = await response.json();
-        setData(result);
+        const result = await response.json();  
+         dispatch(fetchItemsSuccess(result));
       } catch (error) {
         console.log(error.message);
       } 
@@ -26,7 +29,8 @@ const TotalItemsList = () => {
     fetchData();
   }, []); // Empty dependency array means this useEffect runs once when the component mounts
 
-  const totalItems = data.reduce(function (acc, value) {
+  const allItems = useSelector((state) => state.totalItems);
+  const totalItems = allItems.reduce(function (acc, value) {
     const foundIndex = acc.findIndex(item => item.category === value.category);
     if (foundIndex === -1) {
       acc.push({ category: value.category, items: [value.name], count: 1 });
