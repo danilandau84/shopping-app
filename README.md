@@ -2,7 +2,8 @@
 # Instructions:
  1. git clone danilandau84/shopping-app.git
  2. cd shopping-app
- 3. npm start
+ 3. npm install sequelize tedious
+ 4. npm start
 
 # Docker Instructions:
 1. Build docker image command: docker build -t my-app:latest .
